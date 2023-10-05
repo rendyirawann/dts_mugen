@@ -1,3 +1,18 @@
+#MUGEN CLUB MOTORCYCLE
+DTS JUNIOR WEB DEVELOPER
+RENDY IRAWAN - UNIVERSITAS HARAPAN MEDAN
+
+Akun admin:
+username : admin2
+password: admin2
+
+db: biker.sql
+nama folder: dts_mugen
+
+untuk localhost jika tidak default tapi localhost:8080, ubah file pada folder base/base.php BASE URL ubah ke localhost:8080/dts_mugen
+
+WEBSITE UNTUK PERSYARATAN UJI KOMPETENSI SERTIFIKAT DIGITALENT
+
 # [Now UI Dashboard](https://demos.creative-tim.com/now-ui-dashboard/examples/dashboard.html) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/home?status=Now%20UI%20Dashboard%20by%20Creative%20Tim%20https%3A//demos.creative-tim.com/now-ui-dashboard/examples/dashboard.html%20%40CreativeTim%20%23html%20%23dashboard%20%23nowuidesign%20%40creativetim)
 
 
