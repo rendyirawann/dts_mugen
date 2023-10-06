@@ -2,12 +2,16 @@
 DTS JUNIOR WEB DEVELOPER
 RENDY IRAWAN - UNIVERSITAS HARAPAN MEDAN
 
+Jika ingin ada admin*
 Akun admin:
 username : admin2
 password: admin2
 
 db: biker.sql
 nama folder: dts_mugen
+namun, ubah href pada navbar di index.php pada li, komentar pada panel admin, dan buka komentar pada link dropdown agar membuka form login
+
+untuk library SMTP phpmailer, buat token password pada google account manager gmail pada app password ganti pada file contact/form-contact
 
 untuk localhost jika tidak default tapi localhost:8080, ubah file pada folder base/base.php BASE URL ubah ke localhost:8080/dts_mugen
 
