@@ -1,10 +1,10 @@
 <?php
 session_start();
 include 'base/koneksi.php';
-// if (isset($_SESSION['username'])) {
-//     header("location: admin.php");
-//     exit();
-// }
+if (isset($_SESSION['username'])) {
+    header("location: examples/admin.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +81,7 @@ include 'base/koneksi.php';
                                                     Me</label>
                                             </div>
                                         </div> -->
-                                        <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" name="submit" class="btn btn-danger btn-user btn-block">
                                             Login
                                         </button>
                                         <hr>

@@ -34,6 +34,8 @@
   <link href="../assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <!-- Data Tables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
   <script src="<?= BASE_URL?>tinymce/tinymce.min.js"></script>
 </head>
 
@@ -44,9 +46,17 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
+      <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM home WHERE id = '1'");
+$brand = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+        <?php foreach($brand as $logo_brand) : ?>
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
           <img src="<?= BASE_URL?>assets/img/landing/logo.gif" alt="">
-        </a>
+        </a><?php endforeach ?>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
           <?= TITLE?>
         </a>
@@ -66,29 +76,29 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="./admin.php?p=tambah_artikel">
               <i class="now-ui-icons location_map-big"></i>
               <p>Artikel</p>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Event</p>
             </a>
-          </li>
+          </li> -->
           <li>
-            <a href="#">
+            <a href="./admin.php?p=tambah_gallery">
               <i class="now-ui-icons users_single-02"></i>
               <p>Galery</p>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Klien</p>
             </a>
-          </li>
+          </li> -->
           <!-- <li>
             <a href="./typography.html">
               <i class="now-ui-icons text_caps-small"></i>
@@ -151,7 +161,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="logout.php">Logout</a>
+                  <a class="dropdown-item" href="../index.php">Back to Index</a>
                   <!-- <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a> -->
                 </div>

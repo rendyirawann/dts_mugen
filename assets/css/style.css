@@ -619,9 +619,15 @@ section {
 }
 
 .about .image {
-  background: url("../img/landing/profile.jpg") center center no-repeat;
+  /* background: url("../img/landing/profile.jpg") center center no-repeat; */
   background-size: cover;
   min-height: 500px;
+}
+
+.about .image img{
+  background-size: cover;
+  min-height: 500px;
+  width: 400px;
 }
 
 .about .skills-content {
@@ -917,6 +923,12 @@ section {
 
 .portfolio .portfolio-item .portfolio-img img {
   transition: all 0.8s ease-in-out;
+ width: 100%;
+ height: 300px;
+}
+
+.portfolio .container .portfolio-container{
+  width:1300px;
 }
 
 .portfolio .portfolio-item .portfolio-info {

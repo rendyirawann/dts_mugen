@@ -4,26 +4,26 @@
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
+                <a href="#">
+                  MUGEN CLUB
                 </a>
               </li>
               <li>
-                <a href="http://presentation.creative-tim.com">
+                <a href="<?= BASE_URL?>index.php#about">
                   About Us
                 </a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="http://blog.creative-tim.com">
                   Blog
                 </a>
-              </li>
+              </li> -->
             </ul>
           </nav>
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Designed by <a href="#" target="_blank">MUGEN</a>. Coded by <a href="#" target="_blank">MUGEN</a>.
           </div>
         </div>
       </footer>
@@ -109,6 +109,12 @@
     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
   });
 </script>
+    <!-- Data Tables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        new DataTable('#example');
+    </script>
 </body>
 
 </html>

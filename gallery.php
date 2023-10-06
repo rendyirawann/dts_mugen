@@ -76,7 +76,7 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <li class="dropdown"><a href="#"><span>Navigation</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="artikel.php">Artikel</a></li>
-            <li><a href="event.php">Event</a></li>
+            <li><a href="#">Event</a></li>
             <li><a href="gallery.php">Galery Kami</a></li>
             <li><a href="klien.php">Klien Kami</a></li>
             <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-right"></i></a>
@@ -121,29 +121,30 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
           <p>Gallery Deskripsi Mugen</p>
         </div>
 
-        <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="assets/img/hero-bg.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="assets/img/testimonials-bg.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="assets/img/hero-bg.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+        <div class="content">
+          <div class="row">
+          <?php 
 
-      </div>
+$query = mysqli_query($conn, "SELECT * FROM gallery");
+$gallery = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($gallery as $galleryclub) : ?>
+          <div class="col-lg-12 col-md-6 portfolio mb-3 mt-3">
+            <h4>Gallery Club</h4>
+            <div class="portfolio-img"><img src="assets/img/upload/<?= $galleryclub['img'];?>" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <!-- <h4><?= $artikels['title_artikel'];?></h4>
+              <p><?= $artikels['content_artikel'];?></p> -->
+              <!-- <a href="assets/img/hero-bg.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"></a> -->
+              <!-- <a href="#" class="details-link" title="More Details"><button type="button" class="btn btn-primary">Read Now</button></a> -->
+            </div>
+          </div>
+        </div>
+        <?php endforeach ?>
+        </div>
+        </div>
     </section><!-- End My Portfolio Section -->
 
 

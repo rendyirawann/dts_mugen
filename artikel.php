@@ -65,18 +65,18 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
       </div>
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-        <li><a class="nav-link scrollto" href="#profile">Profile</a></li>
-        <li><a class="nav-link scrollto" href="#visimisi">Visi dan Misi</a></li>
-        <li><a class="nav-link scrollto" href="#product">Produk Kami</a></li>
-        <li><a class="nav-link scrollto " href="#contact">Kontak Kami</a></li>
-        <li><a class="nav-link scrollto " href="#footer">About Us</a></li>
+        <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
+        <li><a class="nav-link scrollto" href="index.php">Profile</a></li>
+        <li><a class="nav-link scrollto" href="index.php">Visi dan Misi</a></li>
+        <li><a class="nav-link scrollto" href="index.php">Produk Kami</a></li>
+        <li><a class="nav-link scrollto " href="index.php">Kontak Kami</a></li>
+        <li><a class="nav-link scrollto " href="index.php">About Us</a></li>
         
         <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
         <li class="dropdown"><a href="#"><span>Navigation</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="artikel.php">Artikel</a></li>
-            <li><a href="event.php">Event</a></li>
+            <li><a href="#">Event</a></li>
             <li><a href="gallery.php">Galery Kami</a></li>
             <li><a href="klien.php">Klien Kami</a></li>
             <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-right"></i></a>
@@ -104,7 +104,7 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <div class="hero-container">
       <h1><?= $row['home_title'];?></h1>
       <h2><?= $row['home_description'];?></h2>
-      <a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
+      <a href="#artikel" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
     </div>
   </section><!-- End Hero -->
   <?php endforeach ?>
@@ -112,7 +112,7 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
   <main id="main">
 
  <!-- ======= About Me Section ======= -->
- <section id="profile" class="about">
+ <section id="artikel" class="about">
       <div class="container">
 
         <div class="section-title">
@@ -121,101 +121,31 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
           <p>Artikel Deskripsi Mugen Club</p>
         </div>
 
-            <div class="content">
-              <div class="row">
-                <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-  <img src="assets/img/hero-bg.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Artikel #1</h5>
-    <p class="card-text">(DESKRIPSI ATAU ISI DARI ARTIKEL #1)</p>
-    <a href="#" class="btn btn-primary">Baca Artikel</a>
-  </div>
-</div>
-                </div>
-                <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-  <img src="assets/img/hero-bg.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Artikel #2</h5>
-    <p class="card-text">(DESKRIPSI ATAU ISI DARI ARTIKEL #1)</p>
-    <a href="#" class="btn btn-primary">Baca Artikel</a>
-  </div>
-</div>
-                </div>
-                <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-  <img src="assets/img/hero-bg.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Artikel #3</h5>
-    <p class="card-text">(DESKRIPSI ATAU ISI DARI ARTIKEL #1)</p>
-    <a href="#" class="btn btn-primary">Baca Artikel</a>
-  </div>
-</div>
-                </div>
-              </div>
-              <!-- <div class="row mt-n4">
-                <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-emoji-smile" style="color: #20b38e;"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
-                  </div>
-                </div>
+        <div class="content">
+          <div class="row">
+          <?php 
 
-                <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-journal-richtextr" style="color: #8a1ac2;"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
-                  </div>
-                </div>
+$query = mysqli_query($conn, "SELECT * FROM artikel");
+$artikel = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
 
-                <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-clock" style="color: #2cbdee;"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="bi bi-award" style="color: #ffb459;"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="16" data-purecounter-duration="1" class="purecounter"></span>
-                    <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
-                  </div>
-                </div>
-              </div> -->
-            </div><!-- End .content-->
-
-            <!-- <div class="skills-content ps-lg-4">
-              <div class="progress">
-                <span class="skill">HTML <i class="val">100%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-
-              <div class="progress">
-                <span class="skill">CSS <i class="val">90%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-
-              <div class="progress">
-                <span class="skill">JavaScript <i class="val">75%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div> -->
-
+?>
+<?php foreach($artikel as $artikels) : ?>
+          <div class="col-lg-12 col-md-6 portfolio">
+            <div class="portfolio-img"><img src="assets/img/upload/<?= $artikels['img'];?>" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4><?= $artikels['title_artikel'];?></h4>
+              <p><?= $artikels['content_artikel'];?></p>
+              <a href="assets/img/hero-bg.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"></a>
+              <a href="#" class="details-link" title="More Details"><button type="button" class="btn btn-primary mb-5">Read Now</button></a>
+            </div>
           </div>
         </div>
+        <?php endforeach ?>
+        </div>
+        </div>
 
-      </div>
+          
     </section><!-- End About Me Section -->
 
 

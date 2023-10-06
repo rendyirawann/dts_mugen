@@ -73,8 +73,8 @@
                     <i class="now-ui-icons loader_gear"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Ganti Visi dan Misi Desc</a>
-                    <a class="dropdown-item" href="#">Ganti Content Visi dan Misi</a>
+                    <a class="dropdown-item" href="admin.php?p=ganti_visimisi_desc">Ganti Visi dan Misi Desc</a>
+                    <a class="dropdown-item" href="admin.php?p=tambah_visimisi_point">Tambah Content Visi dan Misi</a>
                     <!-- <a class="dropdown-item" href="#">Something else here</a>
                     <a class="dropdown-item text-danger" href="#">Remove Data</a> -->
                   </div>
@@ -123,8 +123,8 @@
                     <i class="now-ui-icons loader_gear"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Ganti Produk Desc dan Kategori</a>
-                    <a class="dropdown-item" href="#">Ganti Produk Gambar</a>
+                    <a class="dropdown-item" href="admin.php?p=ganti_product_cat">Ganti Produk Desc dan Kategori</a>
+                    <a class="dropdown-item" href="admin.php?p=tambah_product">Tambah Produk</a>
                     <!-- <a class="dropdown-item" href="#">Ganti Home Desc</a> -->
                     <!-- <a class="dropdown-item" href="#">Something else here</a>
                     <a class="dropdown-item text-danger" href="#">Remove Data</a> -->
@@ -154,7 +154,7 @@
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
                     <!-- <a class="dropdown-item" href="#">Ganti Profile Description</a> -->
-                    <a class="dropdown-item" href="#">Ganti Content Contact Us</a>
+                    <a class="dropdown-item" href="admin.php?p=ganti_kontak">Ganti Content Contact Us</a>
                     <!-- <a class="dropdown-item" href="#">Something else here</a>
                     <a class="dropdown-item text-danger" href="#">Remove Data</a> -->
                   </div>
@@ -182,7 +182,7 @@
                     <i class="now-ui-icons loader_gear"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Ganti Content About Us</a>
+                    <a class="dropdown-item" href="admin.php?p=ganti_about">Ganti Content About Us</a>
                     <!-- <a class="dropdown-item" href="#">Something else here</a>
                     <a class="dropdown-item text-danger" href="#">Remove Data</a> -->
                   </div>

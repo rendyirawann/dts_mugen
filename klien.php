@@ -76,7 +76,7 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <li class="dropdown"><a href="#"><span>Navigation</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="artikel.php">Artikel</a></li>
-            <li><a href="event.php">Event</a></li>
+            <li><a href="#">Event</a></li>
             <li><a href="gallery.php">Galery Kami</a></li>
             <li><a href="klien.php">Klien Kami</a></li>
             <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-right"></i></a>
@@ -104,7 +104,7 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <div class="hero-container">
       <h1><?= $row['home_title'];?></h1>
       <h2><?= $row['home_description'];?></h2>
-      <a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
+      <a href="#klien" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
     </div>
   </section><!-- End Hero -->
   <?php endforeach ?>
@@ -152,6 +152,17 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
 </div>
     </div>
             </div>
+            <div class="col-lg-3">
+            <div class="carousel-item active">
+    <div class="card" style="width: 18rem;">
+  <img src="assets/img/testimonials/testimonials-1.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Moh Yus</p>
+  </div>
+</div>
+    </div>
+            </div>
+            
         </div>
 
       </div>

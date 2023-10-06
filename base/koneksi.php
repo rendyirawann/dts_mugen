@@ -27,3 +27,17 @@ function query($query)
     }
     return $rows;
 }
+
+function kirim_pesan($data)
+{
+    global $conn;
+    $name = htmlspecialchars($data["name"]);
+    $email = htmlspecialchars($data["email"]);
+    $subject = htmlspecialchars($data["subject"]);
+    $message = htmlspecialchars($data["message"]);
+
+    $query = "INSERT INTO mail VALUES (NULL, '$name', '$email', '$subject', '$message')";
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}

@@ -2,15 +2,15 @@
 error_reporting(1);
 $id = '1';
 
-$profile = $conn->query("select * from profile_home WHERE id = '$id'");
-$data = $profile->fetch_assoc();
+$visimisi_title = $conn->query("select * from visimisi_title WHERE id = '$id'");
+$data = $visimisi_title->fetch_assoc();
 
 
 ?>
 <div class="content">
   <div class="row">
     <div class="col-lg-12">
-      <h2>Ganti Content Profile <hr></h3>
+      <h2>Ganti Visi Misi Deskripsi <hr></h3>
     </div>
   </div>
   <div class="row">
@@ -22,26 +22,26 @@ $data = $profile->fetch_assoc();
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">Edit Profile</h5>
+                <h5 class="title">Edit Deskripsi</h5>
               </div>
               <?php
             if (isset($_GET['pesan'])) {
                 if ($_GET['pesan'] == 'edit') {
-                  echo "<div class='alert alert-success'>Berhasil Mengedit Content Profile</div>";
+                  echo "<div class='alert alert-success'>Berhasil Mengedit Deskripsi Visi Misi</div>";
               } elseif ($_GET['pesan'] == 'gagal') {
                     echo "<div class='alert alert-danger'>Gagal Error</div>";
                 }
             }
             ?> 
               <div class="card-body">
-                <form action="gantiprofile_act.php" method="POST">
+                <form action="ganti_visimisi_desc_act.php" method="POST">
                 <input type="hidden" name="id" value="<?= $data["id"];?>">
                   <div class="row">
 
                     <div class="col-lg-12 pr-1">
                       <div class="form-group">
-                        <label>Profile Description</label>
-                        <textarea id="myTextarea" name="profile_desc" maxlength="999"><?php echo $data['profile_desc'] ?></textarea>
+                        <label>Visi Misi Description</label>
+                        <textarea id="myTextarea" name="visimisi_desc" maxlength="999"><?php echo $data['visimisi_desc'] ?></textarea>
                       </div>
                     </div>
 
@@ -52,6 +52,8 @@ $data = $profile->fetch_assoc();
                     </div>
                   </div>
                 </form>
+          </div>
+        </div>
               </div>
             </div>
         <!--  -->

@@ -34,7 +34,7 @@ $data = $profile->fetch_assoc();
             }
             ?> 
               <div class="card-body">
-                <form action="gantiprofile_act.php" method="POST">
+                <form action="gantiprofile_act.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?= $data["id"];?>">
                   <div class="row">
 
@@ -80,7 +80,17 @@ $data = $profile->fetch_assoc();
                         <input type="text" name="email" class="form-control" placeholder="Email" value="<?= $data["email"];?>">
                       </div>
                     </div>
-
+                    <div class="col-lg-12">
+                    <label>Profile Image</label>
+                    </div>
+                    <div class="col-lg-12 pr-1">
+                    <div class="input-group">
+                            <input type="file" class="form-control" name="img" id="customFile">
+                            </div>
+                            <img style="margin-top:10px;" height="120px" width="auto" src="<?php echo"../assets/img/upload/".$data["img"];?>">
+                            <input type="hidden" value="<?php echo $data['img'] ?>" name="oldImg">
+                            
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-12 pr-1">

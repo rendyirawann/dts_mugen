@@ -3,7 +3,7 @@ error_reporting(1);
 require "base/koneksi.php";
 
     // Jika tombol submit ditekan
-    if (isset ($_POST["send"])) {
+    if (isset ($_POST["submit"])) {
         
         // Cek berhasil atau tidak menambah data
         if (kirim_pesan ($_POST) > 0) {
@@ -79,7 +79,7 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
 ?>
         <?php foreach($logos as $row) : ?>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.php"><img src="assets/img/landing/logo.gif" alt="" class="img-fluid" width="60px"><span> <?= $row['logo_brand'];?></span></a>
+        <a href="index.php"><img src="assets/img/upload/<?= $row['img'];?>" alt="" class="img-fluid" width="60px"><span> <?= $row['logo_brand'];?></span></a>
       </div>
     <nav id="navbar" class="navbar">
       <ul>
@@ -94,18 +94,19 @@ $logos = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <li class="dropdown"><a href="#"><span>Navigation</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="artikel.php">Artikel</a></li>
-            <li><a href="event.php">Event</a></li>
+            <li><a href="#">Event</a></li>
             <li><a href="gallery.php">Galery Kami</a></li>
             <li><a href="klien.php">Klien Kami</a></li>
-            <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-right"></i></a>
+            <li><a href="examples/admin.php">Panel Admin</a></li>
+            <!-- <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-right"></i></a>
               <ul>
-                <li><a href="login.php" type="button" class="btn btn-primary log">Sign In</a></li>
+                <li><a href="login.php" type="button" class="btn btn-primary log">Panel</a></li>
                 <li><a href="registrasi.php" type="button" class="btn btn-danger log">Signup</a></li>
-                <!-- <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
                 <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li> -->
+                <li><a href="#">Deep Drop Down 5</a></li>
               </ul>
-            </li>
+            </li> -->
             <!-- <li><a href="#">Drop Down 2</a></li>
             <li><a href="#">Drop Down 3</a></li>
             <li><a href="#">Drop Down 4</a></li> -->
@@ -147,7 +148,9 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
         </div>
 
         <div class="row">
-          <div class="image col-lg-4 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
+          <div class="image col-lg-4 d-flex align-items-stretch justify-content-center justify-content-lg-start">
+            <img src="assets/img/upload/<?= $row['img'];?>" alt="">
+          </div>
           <div class="col-lg-8 d-flex flex-column align-items-stretch">
             <div class="content ps-lg-4 d-flex flex-column justify-content-center">
               <div class="row">
@@ -234,13 +237,20 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <!-- ======= My Resume Section ======= -->
     <section id="visimisi" class="resume">
       <div class="container">
+      <?php 
 
+$query = mysqli_query($conn, "SELECT * FROM visimisi_title WHERE id = '1'");
+$visimisi_title = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+        <?php foreach($visimisi_title as $row) : ?>
         <div class="section-title">
           <span>Visi dan Misi</span>
           <h2>Visi dan Misi</h2>
-          <p>Visi dan Misi Mugen Racing</p>
+          <p><?= $row['visimisi_desc'];?></p>
         </div>
-
+<?php endforeach ?>
         <div class="row">
           <div class="col-lg-6">
             <h3 class="resume-title">Visi</h3>
@@ -249,7 +259,16 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
               <!-- <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
               <p> -->
               <ul>
-                <li>Balapan</li>
+              <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM visimisi_point");
+$visi_point = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($visi_point as $row) : ?>
+                <li><?= $row['visi_point'];?></li>
+                <?php endforeach ?>
                 <!-- <li>(123) 456-7891</li>
                 <li>alice.barkley@example.com</li> -->
               </ul>
@@ -281,7 +300,16 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <!-- <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
                 <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
                 <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li> -->
-                <li>Menang</li>
+                <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM visimisi_point");
+$misi_point = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($misi_point as $row) : ?>
+                <li><?= $row['misi_point'];?></li>
+                <?php endforeach ?>
               </ul>
               </p>
             </div>
@@ -307,130 +335,75 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
     <!-- ======= My Portfolio Section ======= -->
     <section id="product" class="portfolio">
       <div class="container">
+      <?php 
 
+$query = mysqli_query($conn, "SELECT * FROM product_cat");
+$category = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($category as $catproduct) : ?>
         <div class="section-title">
           <span>Produk Kami</span>
           <h2>Produk Kami</h2>
-          <p>Produk yang kami tawarkan</p>
+          <p><?= $catproduct['product_desc'];?></p>
         </div>
 
         <ul id="portfolio-flters" class="d-flex justify-content-center">
           <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-app">Bike</li>
-          <li data-filter=".filter-card">Jacket</li>
-          <li data-filter=".filter-web">Helm</li>
+          <li data-filter=".filter-<?= $catproduct['product_category3'];?>"><?= $catproduct['product_category1'];?></li>
+          <li data-filter=".filter-<?= $catproduct['product_category3'];?>"><?= $catproduct['product_category2'];?></li>
+          <li data-filter=".filter-<?= $catproduct['product_category3'];?>"><?= $catproduct['product_category3'];?></li>
         </ul>
-
+<?php endforeach ?>
         <div class="row portfolio-container">
+        <?php 
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="assets/img/product/bike1.jpg" class="img-fluid" alt=""></div>
+$query = mysqli_query($conn, "SELECT * FROM product");
+$productclub = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($productclub as $our) : ?>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-<?= $our['cat_product'];?>">
+            <div class="portfolio-img"><img src="assets/img/upload/<?= $our['img'];?>" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <a href="assets/img/product/bike1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4><?= $our['name_product'];?></h4>
+              <p><?= $our['desc_product'];?></p>
+              <a href="assets/img/upload/<?= $our['img'];?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="#product" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="assets/img/product/helmet1.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="assets/img/product/helmet1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="assets/img/product/bike2.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <a href="assets/img/product/bike2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="assets/img/product/jacket1.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <a href="assets/img/product/jacket1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="assets/img/product/helmet1.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <a href="assets/img/product/helmet1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="assets/img/product/bike1.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <a href="assets/img/product/bike1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="assets/img/product/jacket2.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <a href="assets/img/product/jacket2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="assets/img/product/jacket2.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <a href="assets/img/product/jacket2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="assets/img/product/helmet1.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="assets/img/product/helmet1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+<?php endforeach ?>
+          <!--  -->
 
         </div>
+        
 
       </div>
     </section><!-- End My Portfolio Section -->
 
     <!-- ======= Contact Me Section ======= -->
     <section id="contact" class="contact">
+    <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM contact_us");
+$contact_us = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($contact_us as $row) : ?>
       <div class="container">
 
         <div class="section-title">
           <span>Kontak Kami</span>
           <h2>Kontak Kami</h2>
-          <p>Kontak Kami Dibawah Ini</p>
+          <p><?= $row['contact_desc'];?></p>
         </div>
 
         <div class="row">
           <div class="col-lg-12">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.1960166658573!2d19.17692668762247!3d47.40811769684225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741e9e81e441f1f%3A0x600fb2eeb86ee1f3!2sMUGEN%20RACE!5e0!3m2!1sid!2sid!4v1696435193344!5m2!1sid!2sid" width="1300" height="450" style="border:1px solid whitesmoke;margin-bottom:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="<?= $row['contact_iframe'];?>" width="1300" height="450" style="border:1px solid whitesmoke;margin-bottom:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
 
@@ -444,26 +417,25 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
                   <i class="bx bx-share-alt"></i>
                   <h3>Social Profiles</h3>
                   <div class="social-links">
-                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/reillvx/" class="instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    <a href="<?= $row['link1'];?>" class="twitter"><i class="bi bi-<?= $row['link_name1'];?>"></i></a>
+                    <a href="<?= $row['link2'];?>" class="facebook"><i class="bi bi-<?= $row['link_name2'];?>"></i></a>
+                    <a href="<?= $row['link3'];?>" class="instagram"><i class="bi bi-<?= $row['link_name3'];?>"></i></a>
+                    <a href="<?= $row['link4'];?>" class="linkedin"><i class="bi bi-<?= $row['link_name4'];?>"></i></a>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box mt-4">
                   <i class="bx bx-envelope"></i>
-                  <h3>Email Me</h3>
-                  <p>mugen-racing@jpn.com</p>
+                  <h3>Email</h3>
+                  <p><?= $row['email'];?></p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box mt-4">
                   <i class="bx bx-phone-call"></i>
-                  <h3>Call Me</h3>
-                  <p>+1 5589 55488 55</p>
+                  <h3>Phone Number</h3>
+                  <p><?= $row['no_hp'];?></p>
                 </div>
               </div>
             </div>
@@ -471,7 +443,7 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <!-- <form action="contact/form-contact.php" method="post">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -492,32 +464,103 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+            </form> -->
+            <form action="contact/form-contact.php" method="POST">
+            <div class="row inputBox">
+              <div class="col-md-6 form-group">
+              <input id="name" class="form-control" type="text" name="name" placeholder="Nama Lengkap" required>
+              </div>
+              <div class="col-md-6 form-group">
+              <input id="email" class="form-control" type="email" name="email" placeholder="Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+            <input id="subject" class="form-control" type="text" name="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+            <textarea maxlength="254" type="text" name="message" id="message" class="form-control" placeholder="Enter Your Message" rows="4"></textarea>
+            </div>
+            <div class="text-center"><button class="btn btn-danger mt-2" name="submit" type="submit">Send Message</button></div>
+        </form> 
           </div>
 
         </div>
 
       </div>
+      <?php endforeach ?>
     </section><!-- End Contact Me Section -->
+
 
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
+  <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM about");
+$about = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($about as $row) : ?>
     <div class="container">
-      <h2>About Us</h2>
-      <h3>M U G E N</h3>
-      <p>Japanese Racing Club Motorcycle</p>
+      <div class="row">
+        <div class="col-lg-6">
+        <h2>About Us</h2>
+        <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM home");
+$home = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($home as $logo) : ?>
+      <h3><?= $logo['home_title'];?></h3>
+      <?php endforeach ?>
+      <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM about");
+$abouts = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($abouts as $foot) : ?>
+      <p><?= $foot['about_desc'];?></p>
+      <?php endforeach ?>
       <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM contact_us");
+$social = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($social as $links) : ?>
+        <a href="<?= $links['link1'];?>" class="twitter"><i class="bx bxl-<?= $links['link_name1'];?>"></i></a>
+        <a href="<?= $links['link2'];?>" class="facebook"><i class="bx bxl-<?= $links['link_name2'];?>"></i></a>
+        <a href="<?= $links['link3'];?>" class="instagram"><i class="bx bxl-<?= $links['link_name3'];?>"></i></a>
+        <a href="<?= $links['link4'];?>" class="google-plus"><i class="bx bxl-<?= $links['link_name4'];?>"></i></a>
+        <?php endforeach ?>
+      </div>
+        </div>
+        <div class="col-lg-6">
+        <video controls autoplay width="400px">
+								<source src="assets/video/mugen.mp4" type="video/mp4" />
+							</video>
+        </div>
       </div>
       <div class="copyright">
-        &copy; Copyright <strong><span>MUGEN</span></strong>. All Rights Reserved
+      <?php 
+
+$query = mysqli_query($conn, "SELECT * FROM home");
+$copy = mysqli_fetch_all($query, MYSQLI_ASSOC);
+  
+
+?>
+<?php foreach($copy as $copyright) : ?>
+        &copy; Copyright <strong><span><?= $copyright['home_title'];?></span></strong>. All Rights Reserved
+        <?php endforeach ?>
       </div>
       <!-- <div class="credits"> -->
         <!-- All the links in the footer should remain intact. -->
@@ -527,6 +570,7 @@ $profile = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div> -->
     </div>
+    <?php endforeach ?>
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
